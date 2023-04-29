@@ -1,0 +1,129 @@
+
+public void jButton12ActionPerformed(java.awt.event.ActionEvent evt) 
+{
+        // button logout
+int a=JOptionpane.showConfirmDialog(null,"do you really want to logout","select",JOptionpane.YES_NO_OPTION);
+        if(a==0)
+{
+        setVisible(false);
+        new login().setVisible(true);
+}
+}
+public void jButton13ActionPerformed(java.awt.event.ActionEvent evt) 
+{
+        //button exit
+int a=JOptionpane.showConfirmDialog(null,"do you really want to logout","select",JOptionpane.YES_NO_OPTION);
+        if(a==0)
+{
+        System.exit(0);
+}
+}
+//////////////////////
+//manage room(menu)
+private void formWindowGainedFocus(java.awt.event.windowEvent evt)
+{
+        jbutton1.setForeground(new jButton().getForeground());
+        jbutton1.setBackground(new jButton().getBackground());
+        
+        jbutton2.setForeground(new jButton().getForeground());
+        jbutton2.setBackground(new jButton().getBackground());
+        
+        jbutton3.setForeground(new jButton().getForeground());
+        jbutton3.setBackground(new jButton().getBackground());
+        
+        
+        jbutton4.setForeground(new jButton().getForeground());
+        jbutton4.setBackground(new jButton().getBackground());
+        
+        jbutton5.setForeground(new jButton().getForeground());
+        jbutton5.setBackground(new jButton().getBackground());
+        
+        jbutton6.setForeground(new jButton().getForeground());
+        jbutton6.setBackground(new jButton().getBackground());
+        
+        jbutton7.setForeground(new jButton().getForeground());
+        jbutton7.setBackground(new jButton().getBackground());
+        
+        jbutton8.setForeground(new jButton().getForeground());
+        jbutton8.setBackground(new jButton().getBackground());
+        
+        jbutton9.setForeground(new jButton().getForeground());
+        jbutton9.setBackground(new jButton().getBackground());
+        
+        jbutton10.setForeground(new jButton().getForeground());
+        jbutton10.setBackground(new jButton().getBackground());
+        
+        jbutton11.setForeground(new jButton().getForeground());
+        jbutton11.setBackground(new jButton().getBackground());
+        
+        
+}
+/////////////
+//// ,manage بعدين بكبس  events then action then actionperformed
+
+public void jButton1ActionPerformed(java.awt.event.ActionEvent evt) 
+{
+        jbutton1.setForeground(color.red);
+        jbutton1.setBackground(new color (255,255,255));
+        new Manageroom().setVisible(true);
+}
+        
+public void jButton2ActionPerformed(java.awt.event.ActionEvent evt) 
+{
+jbutton2.setForeground(color.red);
+        jbutton2.setBackground(new color (255,255,255));
+}
+\\\\\\\\\\\
+\\\ 
+package project 
+import java.sql.*;
+
+public class connectionProvider
+{
+    public static Connection getCon()
+    {
+        try
+        {
+            Class.forName("com.mysql.jbdc.driver");
+            Connection con=DriverManager.getConnection("jdbc:msql://localhost:3306/hostel","root","123456");
+            return con;
+        }
+        catch(exception e)
+        {
+        return null;
+        }
+    }
+    }
+///////////////////
+public class ManageRoom extends javax.swing.JFrame
+{
+    public void clear()
+    {
+        jTextfield1.setText("");
+        jTextfield2.setText("");
+        jcheckBox1.setSelected(false);
+        jcheckBox2.setSelected(false);
+        jTextfield2.setBackground(new jButton().getBackground());
+        jTextfield2.setForeground(new JButton().getForeground());
+        jTextfield2.setEditable(false);
+    }
+    public void tableDetails()
+    {
+        DefaultTableModel dtm=(DefaultTableModel) jTable.getmodel();
+        dtm.setRowcount(0);
+        try
+        {
+            connection con=connectionProvide.getCon();
+            statement st=con.createStatement();
+            ResultSet rs=st.executeQuery("select *from room");
+            while(rs,next())
+            {
+                dtm.addRow(new Object[]{rs.getString(1),rs.getString(3)});
+            }
+        }
+        catch(Exception e)
+        {
+          JOPtionPane.showMessageDialog(null,e)  
+        }
+    }
+}

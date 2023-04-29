@@ -1,0 +1,24 @@
+ private void login {
+        String name=txt_username.getText();
+        String pwd=txt_Password.getText();
+        }
+        try
+        {
+           PreparedStatement pst=con.prepareStatement("insert *from users where name=? and password=?"); 
+         ps.setString(1,name);
+         ps.setString(2,pwd);
+        ResultSet rs=pst.executeQuery();
+        if(rs.next())
+            {
+                JOptionPane.showMessageDialog(this," login Successfully");
+                Homepage home=new  Homepage ();
+                home.setVisible(true);
+                this.dispose();
+            }
+else
+{
+JOptionPane.showMessageDialog(this,"  incorrect username or password");
+}
+        } catch (Exception e) {
+           
+        }
